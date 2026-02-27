@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn import metrics
@@ -19,12 +20,12 @@ times = pd.get_dummies(df['time'], drop_first=True, dtype=int)
 df = pd.concat([df, days, times], axis=1)
 
 # features and target
-X = df[['sex','smoker','size','Fri','Sat','Sun','Dinner']]
+X = df[['total_bill' ,'sex','smoker','size','Fri','Sat','Sun','Dinner']]
 y = df['tip']
 
 # split data
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.25, random_state=26
+    X, y, test_size=0.25, random_state=0
 )
 
 # train model
